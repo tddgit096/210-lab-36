@@ -29,12 +29,13 @@ int main() {
         BST.insertNode(test[i]);
     }
     BST.displayInOrder();
-    cout<<"\n\"dog\" deleted:\n";
+    cout<<"\n \"dog\" deleted:\n";
     BST.remove("dog");
     BST.displayInOrder();
-    cout<< "eagle is " << BST.searchNode("eagle")? "found.\n" : "not found.\n";
+    cout<< "\n eagle is " << (BST.searchNode("eagle") ? "found.\n\n" : "not found.\n\n");
+    cout<< " armadillo is " << (BST.searchNode("armadillo") ? "found.\n\n" : "not found.\n\n");
     BST.insertNode("iguana");
-    cout<<"iguana added.\n";
+    cout<<" iguana added.\n";
     BST.displayInOrder();
     return 0;
 }
