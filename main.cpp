@@ -1,6 +1,7 @@
 //Lab 36 | Toma Dimov | COSMC210
 
 #include <iostream>
+#include <fstream>
 #include "StringBinaryTree.h"
 using namespace std;
     //Modify the class to process the codes found in the codes.txt file, which are strings, rather than integers. 
@@ -17,11 +18,11 @@ using namespace std;
 
     DONE -1. Project is set up and running using the provided files.
     DONE -2. Code modification from int to strings is complete, and your code exercises this for testing.
-    3. Your code successfully creates a BST from the records and outputs it using the method of your choosing. 
+    DONE -3. Your code successfully creates a BST from the records and outputs it using the method of your choosing. 
     4. Your code's menu is functional.
 */
 
-int main() {
+/* OLD DRIVER PROGRAM
     StringBinaryTree BST;
     int SIZE = 8;
     string test[SIZE]={"zebra", "ape", "donkey","eagle", "whale", "cat","dog","beaver"};
@@ -36,6 +37,32 @@ int main() {
     cout<< " armadillo is " << (BST.searchNode("armadillo") ? "found.\n\n" : "not found.\n\n");
     BST.insertNode("iguana");
     cout<<" iguana added.\n";
+    BST.displayInOrder();*/
+
+void populateFromInput(StringBinaryTree&);
+
+int main() {
+    StringBinaryTree BST;
+
+
+
     BST.displayInOrder();
+
     return 0;
+}
+
+        //Populate the BST via file input
+void populateFromInput(StringBinaryTree& B){
+    fstream file("codes.txt");
+    if(file.is_open()){
+        string line;
+        while(getline(file,line)){
+            BST.insertNode(line);
+        }
+    file.close();
+    }
+    else{
+        cout<<"Input file not found. Aborting./n";
+        return;
+    }
 }
