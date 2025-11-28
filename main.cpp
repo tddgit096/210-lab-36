@@ -38,31 +38,60 @@ using namespace std;
     BST.insertNode("iguana");
     cout<<" iguana added.\n";
     BST.displayInOrder();*/
+string INPUTFILE = "codes.txt";
 
-void populateFromInput(StringBinaryTree&);
+void populateFromInput(StringBinaryTree&,string);
+void BSTmenu(StringBinaryTree&);
 
 int main() {
     StringBinaryTree BST;
-
-
-
+    populateFromInput(BST, INPUTFILE);
+    
+    
     BST.displayInOrder();
 
     return 0;
 }
 
-        //Populate the BST via file input
-void populateFromInput(StringBinaryTree& B){
-    fstream file("codes.txt");
+    //Populates the given BST via file input, pass by reference
+void populateFromInput(StringBinaryTree& B,string inputfile){
+    fstream file(inputfile);
     if(file.is_open()){
         string line;
         while(getline(file,line)){
-            BST.insertNode(line);
+            B.insertNode(line);
         }
     file.close();
     }
     else{
         cout<<"Input file not found. Aborting./n";
         return;
+    }
+}
+
+void BSTmenu(StringBinaryTree& B){
+    while(true){
+        string strInput;
+        //Menu Display for user
+        cout<<"Main Menu:\n";
+        cout<<"  [1]Display BST.\n";
+        cout<<"  [2]Search for string.\n";
+        cout<<"  [3]Add New Node.\n";
+        cout<<"  [4]Remove Node by string.\n";
+        cout<<"  [5]Modify Node.\n";
+        cout<<"  [0]Exit.\n";
+
+        //getline(strInput);
+        int input = stoi(strInput);
+        switch (input)
+        {
+        case 1:
+            break;
+        
+
+        default:
+            break;
+        }
+
     }
 }
