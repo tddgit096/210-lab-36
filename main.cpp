@@ -4,52 +4,16 @@
 #include <fstream>
 #include "StringBinaryTree.h"
 using namespace std;
-    //Modify the class to process the codes found in the codes.txt file, which are strings, rather than integers. 
-        //read line by line
-            //call insert after each line
-            //class function must compare strings by alphabetical order
-                //lets use std:: strings, that's already a feature implemented in them
-                //modify class function to store and sort strings instead
-    //Write a program that creates and populates a BST from these records.
-        //see above
-    //Add interactive, menu-driven functionality to add, delete, search, and modify records
 
-/*Milestones to document with your commits, in addition to 10-minute commits (commit must read 'Milestone n' where n is the milestone number):
-
-    DONE -1. Project is set up and running using the provided files.
-    DONE -2. Code modification from int to strings is complete, and your code exercises this for testing.
-    DONE -3. Your code successfully creates a BST from the records and outputs it using the method of your choosing. 
-    4. Your code's menu is functional.
-*/
-
-/* OLD DRIVER PROGRAM
-    StringBinaryTree BST;
-    int SIZE = 8;
-    string test[SIZE]={"zebra", "ape", "donkey","eagle", "whale", "cat","dog","beaver"};
-    for(int i=0;i<SIZE;i++){
-        BST.insertNode(test[i]);
-    }
-    BST.displayInOrder();
-    cout<<"\n \"dog\" deleted:\n";
-    BST.remove("dog");
-    BST.displayInOrder();
-    cout<< "\n eagle is " << (BST.searchNode("eagle") ? "found.\n\n" : "not found.\n\n");
-    cout<< " armadillo is " << (BST.searchNode("armadillo") ? "found.\n\n" : "not found.\n\n");
-    BST.insertNode("iguana");
-    cout<<" iguana added.\n";
-    BST.displayInOrder();*/
 string INPUTFILE = "codes.txt";
-
-void populateFromInput(StringBinaryTree&,string);
-void BSTmenu(StringBinaryTree&);
+//prototype Functions
+void populateFromInput(StringBinaryTree&,string);   //file reading and populating
+void BSTmenu(StringBinaryTree&);                    //user menu
 
 int main() {
     StringBinaryTree BST;
     populateFromInput(BST, INPUTFILE);
-    
-    
-    //BST.displayInOrder();
-
+    BSTmenu(BST);
     return 0;
 }
 
@@ -73,13 +37,12 @@ void BSTmenu(StringBinaryTree& B){
     while(true){
         string strInput;
         //Menu Display for user
-        cout<<"=============================";
-        cout<<"Main Menu:\n";
+        cout<<"============ Main Menu ==============\n";
         cout<<"  [1]Display BST.\n";
         cout<<"  [2]Search for string.\n";
         cout<<"  [3]Add New Node.\n";
         cout<<"  [4]Remove Node by string.\n";
-        cout<<"  [5]Modify Node.\n";
+        cout<<"  [5]Replace Node.\n";
         cout<<"  [0]Exit.\n";
 
         getline(cin,strInput);
@@ -95,7 +58,7 @@ void BSTmenu(StringBinaryTree& B){
             string searchString;
             cout<<"Which string would you like to search for (case sensitive)?\n";
             getline(cin,searchString);
-            cout<<searchString<<(B.searchNode(searchString) ? " found." : "not found.")<<endl;
+            cout<<searchString<<(B.searchNode(searchString) ? " found." : " not found.")<<endl;
             break;
         }
         case 3:{ //add a new node
@@ -115,12 +78,15 @@ void BSTmenu(StringBinaryTree& B){
                 break;
             }
             B.remove(targetString);
+            cout<<targetString<<" successfully removed.";
             break;
         }
-        case 5:{ //modify node
+        case 5:{ //replace node
             string targetString;
-            cout<<"Enter the string to be modified (case sensitive)\n";
+            cout<<"Enter the string to be modified/replaced (case sensitive)\n";
             getline(cin,targetString);
+            //Somewhat redundant, the BST method will abort and COUT an error if searchNode isn't present, but it does it after the user inputs new value
+            //This does it before the user enters the new value, better for the user this way.
             if(!B.searchNode(targetString)){ //check if target is present
                 cout<<targetString<<" not found.\n";
                 break;
@@ -128,7 +94,8 @@ void BSTmenu(StringBinaryTree& B){
             string newString;
             cout<<"What would you like to change "<< targetString<< " to?\n";
             getline(cin,newString);
-            
+            B.modify(targetString,newString);
+            cout<<"Replacement complete.\n";
             break;
         }
         default:

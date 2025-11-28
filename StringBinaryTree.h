@@ -161,20 +161,12 @@ void StringBinaryTree::makeDeletion(TreeNode *&nodePtr) {
 
 // Modify method to change a node's string into another.
 void StringBinaryTree::modify(string initialVal,string newVal){
-   if(this->searchNode(initialVal)){
+   if(!searchNode(initialVal)){
       cout<<initialVal <<" not found.\n";
       return;
    }
-   modifyNode(initialVal,newVal,root);
-}
-
-void StringBinaryTree::modifyNode(string initialVal,string newVal, TreeNode *&nodePtr){
-   if(initialVal<nodePtr->value)
-      modifyNode(initialVal,newVal,nodePtr->left);
-   else if(initialVal>nodePtr->value)
-      modifyNode(initialVal,newVal,nodePtr->right);
-   else
-      nodePtr->value = newVal;
+   remove(initialVal);
+   insertNode(newVal);
 }
 
 // The displayInOrder member function displays the values       
