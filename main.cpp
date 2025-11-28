@@ -15,18 +15,26 @@ using namespace std;
 
 /*Milestones to document with your commits, in addition to 10-minute commits (commit must read 'Milestone n' where n is the milestone number):
 
-    1. Project is set up and running using the provided files.
-    2. Code modification from int to strings is complete, and your code exercises this for testing.
+    DONE -1. Project is set up and running using the provided files.
+    DONE -2. Code modification from int to strings is complete, and your code exercises this for testing.
     3. Your code successfully creates a BST from the records and outputs it using the method of your choosing. 
     4. Your code's menu is functional.
 */
 
 int main() {
-    string test1 ="zebra";
-    string test2 ="ape";
-    if(test1<test2)
-        cout<<test1<<" "<<test2;
-    else
-        cout<<test2<<" "<<test1;
+    StringBinaryTree BST;
+    int SIZE = 8;
+    string test[SIZE]={"zebra", "ape", "donkey","eagle", "whale", "cat","dog","beaver"};
+    for(int i=0;i<SIZE;i++){
+        BST.insertNode(test[i]);
+    }
+    BST.displayInOrder();
+    cout<<"\n\"dog\" deleted:\n";
+    BST.remove("dog");
+    BST.displayInOrder();
+    cout<< "eagle is " << BST.searchNode("eagle")? "found.\n" : "not found.\n";
+    BST.insertNode("iguana");
+    cout<<"iguana added.\n";
+    BST.displayInOrder();
     return 0;
 }

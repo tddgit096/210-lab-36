@@ -62,12 +62,12 @@ void StringBinaryTree::insert(TreeNode *&nodePtr, TreeNode *&newNode) {
 
 // insertNode creates a new node to hold num as its value,
 // and passes it to the insert function.                  
-void StringBinaryTree::insertNode(int num) {
+void StringBinaryTree::insertNode(string s) {
    TreeNode *newNode;      // Pointer to a new node.
 
    // Create a new node and store num in it.
    newNode = new TreeNode;
-   newNode->value = num;
+   newNode->value = s;
    newNode->left = newNode->right = nullptr;
    
    // Insert the node.
@@ -105,9 +105,9 @@ bool StringBinaryTree::searchNode(string s) {
 }
 
 // remove calls deleteNode to delete the      
-// node whose value member is the same as num.
-void StringBinaryTree::remove(string val) {
-   deleteNode(num, root);
+// node whose value member is the same as s.
+void StringBinaryTree::remove(string s) {
+   deleteNode(s, root);
 }
 
 // deleteNode deletes the node whose value 
