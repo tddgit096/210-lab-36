@@ -1,7 +1,7 @@
 //Lab 36 | Toma Dimov | COSMC210
 
 #include <iostream>
-#include "IntBinaryTree.h"
+#include "StringBinaryTree.h"
 using namespace std;
     //Modify the class to process the codes found in the codes.txt file, which are strings, rather than integers. 
         //read line by line
@@ -22,7 +22,11 @@ using namespace std;
 */
 
 int main() {
-
-
+    string test1 ="zebra";
+    string test2 ="ape";
+    if(test1<test2)
+        cout<<test1<<" "<<test2;
+    else
+        cout<<test2<<" "<<test1;
     return 0;
 }
