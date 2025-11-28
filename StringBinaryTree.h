@@ -21,7 +21,6 @@ private:
    void destroySubTree(TreeNode *);
    void deleteNode(string, TreeNode *&);
    void makeDeletion(TreeNode *&);
-   void modifyNode(string,string,TreeNode *&);
    void displayInOrder(TreeNode *) const;
    void displayPreOrder(TreeNode *) const;
    void displayPostOrder(TreeNode *) const;

@@ -6,7 +6,7 @@
 using namespace std;
 
 string INPUTFILE = "codes.txt";
-//prototype Functions
+
 void populateFromInput(StringBinaryTree&,string);   //file reading and populating
 void BSTmenu(StringBinaryTree&);                    //user menu
 
@@ -33,6 +33,7 @@ void populateFromInput(StringBinaryTree& B,string inputfile){
     }
 }
 
+    //BST menu
 void BSTmenu(StringBinaryTree& B){
     while(true){
         string strInput;
