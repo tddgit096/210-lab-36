@@ -48,7 +48,7 @@ int main() {
     populateFromInput(BST, INPUTFILE);
     
     
-    BST.displayInOrder();
+    //BST.displayInOrder();
 
     return 0;
 }
@@ -73,6 +73,7 @@ void BSTmenu(StringBinaryTree& B){
     while(true){
         string strInput;
         //Menu Display for user
+        cout<<"=============================";
         cout<<"Main Menu:\n";
         cout<<"  [1]Display BST.\n";
         cout<<"  [2]Search for string.\n";
@@ -81,14 +82,36 @@ void BSTmenu(StringBinaryTree& B){
         cout<<"  [5]Modify Node.\n";
         cout<<"  [0]Exit.\n";
 
-        //getline(strInput);
+        getline(cin,strInput);
         int input = stoi(strInput);
         switch (input)
         {
-        case 1:
+        case 0: //exit
+            return;
+        case 1: //display
+            B.displayInOrder();
             break;
-        
-
+        case 2:{//search via string
+            string searchString;
+            cout<<"Which string would you like to search for (case sensitive)?\n";
+            getline(cin,searchString);
+            cout<<searchString<<(B.searchNode(searchString) ? " found." : "not found.")<<endl;
+            break;
+        }
+        case 3:{ //add a new node
+            string newString;
+            cout<<"Adding new string. Enter its value:\n";
+            getline(cin,newString);
+            B.insertNode(newString);
+            cout<<newString<<" added.\n";
+            break;
+        }
+        case 4:{ //remove by string
+            
+        }
+            break;
+        case 5:
+            break;
         default:
             break;
         }
