@@ -107,14 +107,32 @@ void BSTmenu(StringBinaryTree& B){
             break;
         }
         case 4:{ //remove by string
-            
+            string targetString;
+            cout<<"Enter the string to be removed (case sensitive)\n";
+            getline(cin,targetString);
+            if(!B.searchNode(targetString)){ //check if target is present
+                cout<<targetString<<" not found.\n";
+                break;
+            }
+            B.remove(targetString);
+            break;
         }
+        case 5:{ //modify node
+            string targetString;
+            cout<<"Enter the string to be modified (case sensitive)\n";
+            getline(cin,targetString);
+            if(!B.searchNode(targetString)){ //check if target is present
+                cout<<targetString<<" not found.\n";
+                break;
+            }
+            string newString;
+            cout<<"What would you like to change "<< targetString<< " to?\n";
+            getline(cin,newString);
+            
             break;
-        case 5:
-            break;
+        }
         default:
             break;
         }
-
     }
 }

@@ -36,6 +36,7 @@ public:
    void insertNode(string);
    bool searchNode(string);
    void remove(string);
+   void modify(string,string);
 
    // Public wrappers for tree traversal functions.
    void displayInOrder() const     {  displayInOrder(root); }
@@ -155,6 +156,15 @@ void StringBinaryTree::makeDeletion(TreeNode *&nodePtr) {
       nodePtr = nodePtr->right;
       delete tempNodePtr;
    }
+}
+
+// Modify method to change a node's string into another.
+void modify(string,string){
+   ()
+}
+
+void modifyNode(string initialVal,string newVal,TreeNode *&nodePtr){
+
 }
 
 // The displayInOrder member function displays the values       
